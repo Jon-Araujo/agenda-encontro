@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda</title>
+
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <header></header>
-    <main>
-        <label for="input-data">Escolha a data para realizar o despacho:</label>
-        <input type="date" id="input-data">
-        <label for="input-hora"></label>
-        <input type="time" id="input-hora">
-        <button id="btn-enviar">Enviar</button>
+    <header>
+        <h1>Agendamento de despacho com o comandante</h1>
+    </header>
+
+    <main class="conteudo">
+        <section class="inicio">
+            <label for="login">Login:</label>
+            <input type="text" id="login">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha">
+            <div>
+                <button id="btn-entrar">Entrar</button>
+                <button id="btn-cadastrar">Cadastre-se</button>
+            </div>
+            <a href="#">Esqueci minha senha</a>
+        </section>
     </main>
+
     <footer></footer>
-    <script src="main.js"></script>
+    <script src="main.js" type="module"></script>
 </body>
+
 </html>
