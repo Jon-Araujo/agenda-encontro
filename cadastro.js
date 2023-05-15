@@ -14,8 +14,28 @@ export function telaCadastro() {
 
                     <button id="btn-cad">Cadastrar</button>
             </section>
+            <button class="btn-voltar">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
             `
     document.getElementById('btn-cad').addEventListener("click", cadastraUsuario);
+
+    document.querySelector('.btn-voltar').addEventListener("click", () => {
+        document.querySelector('.conteudo').innerHTML =
+        `
+        <section class="inicio">
+                        <label for="login">Login:</label>
+                        <input type="text" id="login">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha">
+                        <div>
+                                <button id="btn-entrar">Entrar</button>
+                                <button id="btn-cadastrar">Cadastre-se</button>
+                        </div>
+                        <a href="#">Esqueci minha senha</a>
+        </section>
+        `
+    })
 };
 
 function cadastraUsuario() {

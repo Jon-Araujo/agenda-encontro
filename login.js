@@ -11,8 +11,28 @@ function telaLogin() {
                         <input type="time" id="input-hora">
                         <button id="btn-enviar">Enviar</button>
                 </section>
+                <button class="btn-logout">
+                        <span class="material-symbols-outlined">logout</span>
+                </button>
                 `
         document.getElementById('btn-enviar').addEventListener("click", agendar);
+
+        document.querySelector('.btn-logout').addEventListener("click", () => {
+                conteudo.innerHTML = 
+                `
+                <section class="inicio">
+                        <label for="login">Login:</label>
+                        <input type="text" id="login">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha">
+                        <div>
+                                <button id="btn-entrar">Entrar</button>
+                                <button id="btn-cadastrar">Cadastre-se</button>
+                        </div>
+                        <a href="#">Esqueci minha senha</a>
+                </section>
+                `
+        })
 
 };
 
