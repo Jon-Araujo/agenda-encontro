@@ -31,7 +31,8 @@ header {
 
 .inicio,
 .login,
-.cadastro {
+.cadastro,
+.recupera {
     display: flex;
     flex-direction: column;
     min-width: 30%;
@@ -55,7 +56,8 @@ input {
 #btn-entrar,
 #btn-cadastrar,
 #btn-enviar,
-#btn-cad {
+#btn-cad,
+#btn-recuperar {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 8px;
@@ -68,13 +70,17 @@ input {
 #btn-entrar:hover,
 #btn-cadastrar:hover,
 #btn-enviar:hover,
-#btn-cad:hover {
+#btn-cad:hover,
+#btn-recuperar:hover {
     transform: scale(1.1);
     transition: 0.5s;
 }
 
-#btn-cad {
-    max-width: 35%;
+#btn-cad,
+#btn-recuperar,
+#btn-enviar {
+    align-self: flex-end;
+    min-width: 45%;
 }
 
 .btn-recupera-senha {
@@ -90,7 +96,15 @@ input {
     text-decoration: underline;
 }
 
-footer > p {
+footer {
+    text-align: center;
+}
+
+footer>p {
     font-weight: bold;
     text-align: center;
+    padding: 0.3rem;
+    background-color: #556B2F;
+    display: inline;
+    border-radius: 8px;
 }

@@ -7,3 +7,4 @@ document.getElementById('btn-entrar').addEventListener("click", validaLogin);
 document.getElementById('btn-cadastrar').addEventListener("click", telaCadastro);
 
 document.querySelector('.btn-recupera-senha').addEventListener("click", recuperaSenha);
+
