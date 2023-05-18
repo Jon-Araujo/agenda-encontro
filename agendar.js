@@ -1,3 +1,5 @@
+import { popUpMarcado } from './popUp.js'
+
 export function agendar() {
     const data = document.getElementById('input-data');
     const hora = document.getElementById('select-hora');
@@ -14,16 +16,17 @@ export function agendar() {
         const filtro = lista.filter(elemento => elemento == dataHora);
         if (filtro.length == 0) {
             lista.push(dataHora);
-            msgConfirmacao()
+            popUpMarcado(data.value, hora.value)
+            // msgConfirmacao()
         } else {
             alert("Erro. Data e/ou horário não disponível")
         }
     } else {
         lista.push(dataHora);
-        msgConfirmacao();
+        // msgConfirmacao();
     };
     
-    data.value = "";
+    document.getElementById('input-data').value = "";
     hora.value = "";
     
     localStorage.agenda = JSON.stringify(lista);

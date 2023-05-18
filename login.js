@@ -8,14 +8,23 @@ async function horariosDisponiveis() {
 
         if (localStorage.agenda) {
                 const agenda = JSON.parse(localStorage.getItem('agenda'));
-                const dataSelecionada = document.getElementById('input-data').value;
-                var filtro = agenda.filter(data => data.slice(0, 10) === dataSelecionada)
-                var horarioIndisponivel = filtro.map(indisponivel => indisponivel.slice(11, 16))
-                var horarioDisponivel = horarios;
+                var dataSelecionada = document.getElementById('input-data').value;
+                var filtro = agenda.filter(data => data.slice(0, 10) === dataSelecionada);
+                var horarioIndisponivel = filtro.map(indisponivel => indisponivel.slice(11, 16));
 
-                for (let i = 0; i < horarios.length; i++) {
+                const inputManha = document.getElementById('input-manha');
+                const inputTarde = document.getElementById('input-tarde');
+
+                if (inputManha.checked) {
+                        var horarioDisponivel = horarios.manha;
+                } else if (inputTarde.checked) {
+                        var horarioDisponivel = horarios.tarde;
+                }
+
+
+                for (let i = 0; i < horarioDisponivel.length; i++) {
                         for (let j = 0; j < horarioIndisponivel.length; j++) {
-                                if (horarios[i] === horarioIndisponivel[j]) {
+                                if (horarioDisponivel[i] === horarioIndisponivel[j]) {
                                         horarioDisponivel.splice(i, 1)
                                 }
                         }
@@ -44,9 +53,16 @@ function telaLogin() {
         conteudo.innerHTML =
                 `
                 <section class="login">
+                        <p>Escolha o Turno:</p>
+                        <div class="check-turnos">
+                                <label for="input-manha"><input type="checkbox" id="input-manha">Manhã</label>
+                                <label for="input-tarde"><input type="checkbox" id="input-tarde">Tarde</label>
+                        </div>
+
                         <label for="input-data">Escolha a data para realizar o despacho:</label>
                         <input type="date" id="input-data">
                         
+
                         <p>Escolha o horário:</p>
                         <select id="select-hora"></select>
 
