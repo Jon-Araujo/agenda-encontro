@@ -41,45 +41,6 @@
     </footer>
 
     <script src="main.js" type="module"></script>
-    <script>
-        function horariosDisponiveis() {
-            const horarios = ["08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00"];
-            const optionsHora = document.getElementById('select-hora');
-            optionsHora.innerHTML= '';
-
-            if (localStorage.agenda) {
-                const agenda = JSON.parse(localStorage.getItem('agenda'));
-                const dataSelecionada = document.getElementById('input-data').value;
-                var filtro = agenda.filter(data => data.slice(0, 10) === dataSelecionada)
-                var horarioIndisponivel = filtro.map(indisponivel => indisponivel.slice(11, 16))
-                var horarioDisponivel = horarios;
-
-                for (let i = 0; i < horarios.length; i++) {
-                    for (let j = 0; j < horarioIndisponivel.length; j++) {
-                        if (horarios[i] === horarioIndisponivel[j]) {
-                            horarioDisponivel.splice(horarios.indexOf(horarios[i]), 1)
-                        }
-                    }
-                }
-                console.log(horarioDisponivel);
-
-                for (let i in horarioDisponivel) {
-                    optionsHora.innerHTML += 
-                    `
-                    <option>${horarioDisponivel[i]}</option>;
-                    `
-                }
-            } else {
-                for (let i in horarioDisponivel) {
-                    optionsHora.innerHTML += 
-                    `
-                    <option>${horarioDisponivel[i]}</option>;
-                    `
-                }
-            }
-
-        };
-    </script>
 </body>
 
 </html>

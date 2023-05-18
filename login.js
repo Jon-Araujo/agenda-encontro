@@ -1,14 +1,51 @@
 import { agendar } from "./agendar.js";
-// import { horariosDisponiveis }
+
+async function horariosDisponiveis() {
+        const horariosJSON = await (await fetch('./horarios.json')).json();
+        const horarios = horariosJSON.horarios;
+        const optionsHora = document.getElementById('select-hora');
+        optionsHora.innerHTML = '';
+
+        if (localStorage.agenda) {
+                const agenda = JSON.parse(localStorage.getItem('agenda'));
+                const dataSelecionada = document.getElementById('input-data').value;
+                var filtro = agenda.filter(data => data.slice(0, 10) === dataSelecionada)
+                var horarioIndisponivel = filtro.map(indisponivel => indisponivel.slice(11, 16))
+                var horarioDisponivel = horarios;
+
+                for (let i = 0; i < horarios.length; i++) {
+                        for (let j = 0; j < horarioIndisponivel.length; j++) {
+                                if (horarios[i] === horarioIndisponivel[j]) {
+                                        horarioDisponivel.splice(i, 1)
+                                }
+                        }
+                }
+                console.log(horarioDisponivel);
+
+                for (let i in horarioDisponivel) {
+                        optionsHora.innerHTML +=
+                                `
+                <option>${horarioDisponivel[i]}</option>;
+                `
+                }
+        } else {
+                for (let i in horarioDisponivel) {
+                        optionsHora.innerHTML +=
+                                `
+                <option>${horarioDisponivel[i]}</option>;
+                `
+                }
+        }
+
+};
 
 function telaLogin() {
-
         const conteudo = document.querySelector('.conteudo');
         conteudo.innerHTML =
                 `
                 <section class="login">
                         <label for="input-data">Escolha a data para realizar o despacho:</label>
-                        <input type="date" id="input-data" oninput="horariosDisponiveis()">
+                        <input type="date" id="input-data">
                         
                         <p>Escolha o horário:</p>
                         <select id="select-hora"></select>
@@ -19,45 +56,20 @@ function telaLogin() {
                         <span class="material-symbols-outlined">logout</span>
                 </button>
                 `
+        document.getElementById('input-data').addEventListener("input", horariosDisponiveis);
         document.getElementById('btn-enviar').addEventListener("click", agendar);
 
         document.querySelector('.btn-logout').addEventListener("click", () => {
-                conteudo.innerHTML = 
-                `
-                <section class="inicio">
-                        <label for="login">Login:</label>
-                        <input type="text" id="login">
-                        <label for="senha">Senha:</label>
-                        <input type="password" id="senha">
-                        <div>
-                                <button id="btn-entrar">Entrar</button>
-                                <button id="btn-cadastrar">Cadastre-se</button>
-                        </div>
-                        <a href="#">Esqueci minha senha</a>
-                </section>
-                `
-        })
+                location.reload();
+        });
 
 };
 
-export async function validaLogin() {
+export function validaLogin() {
         const login = document.getElementById('login').value;
         const senha = document.getElementById('senha').value;
-    
-        // const loginJSON = await (await fetch("./perfis.json")).json();
 
-        // if (login === loginJSON.perfis[0].login && senha === loginJSON.perfis[0].senha) {
-        //         alert("Login realizado com sucesso!")
-        //         telaLogin();
-        // } else {
-        //         alert("usuário/ou senha errado!")
-        // }
-
-        // if (localStorage.usuarios) {
         var perfis = JSON.parse(localStorage.getItem('usuarios'));
-        // } else {
-        //         var perfis = []
-        // }
 
         for (let i = 0; i < perfis.length; i++) {
                 if (login === perfis[i][0] && senha === perfis[i][1]) {
