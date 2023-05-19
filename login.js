@@ -6,20 +6,20 @@ async function horariosDisponiveis() {
         const optionsHora = document.getElementById('select-hora');
         optionsHora.innerHTML = '';
 
+        const inputManha = document.getElementById('input-manha');
+        const inputTarde = document.getElementById('input-tarde');
+
+        if (inputManha.checked) {
+                var horarioDisponivel = horarios.manha;
+        } else if (inputTarde.checked) {
+                var horarioDisponivel = horarios.tarde;
+        }
         if (localStorage.agenda) {
                 const agenda = JSON.parse(localStorage.getItem('agenda'));
                 var dataSelecionada = document.getElementById('input-data').value;
                 var filtro = agenda.filter(data => data.slice(0, 10) === dataSelecionada);
                 var horarioIndisponivel = filtro.map(indisponivel => indisponivel.slice(11, 16));
 
-                const inputManha = document.getElementById('input-manha');
-                const inputTarde = document.getElementById('input-tarde');
-
-                if (inputManha.checked) {
-                        var horarioDisponivel = horarios.manha;
-                } else if (inputTarde.checked) {
-                        var horarioDisponivel = horarios.tarde;
-                }
 
 
                 for (let i = 0; i < horarioDisponivel.length; i++) {
@@ -38,6 +38,12 @@ async function horariosDisponiveis() {
                 `
                 }
         } else {
+                // if (inputManha.checked) {
+                //         var horarioDisponivel = horarios.manha;
+                // } else if (inputTarde.checked) {
+                //         var horarioDisponivel = horarios.tarde;
+                // }
+
                 for (let i in horarioDisponivel) {
                         optionsHora.innerHTML +=
                                 `

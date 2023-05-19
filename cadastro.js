@@ -41,19 +41,20 @@ function cadastraUsuario() {
     localStorage.usuarios = JSON.stringify(lista);
 
     //Volta a página:
-    const conteudo = document.querySelector('.conteudo');
-    conteudo.innerHTML =
-    `
-    <section class="inicio">
-        <label for="login">Login:</label>
-        <input type="text" id="login">
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha">
-        <div>
-            <button id="btn-entrar">Entrar</button>
-            <button id="btn-cadastrar">Cadastre-se</button>
-        </div>
-        <button class="btn-recupera-senha" href="#">Esqueci minha senha</button>
-    </section>
-    `
+    // const conteudo = document.querySelector('.conteudo');
+    // conteudo.innerHTML =
+    // `
+    // <section class="inicio">
+    //     <label for="login">Login:</label>
+    //     <input type="text" id="login">
+    //     <label for="senha">Senha:</label>
+    //     <input type="password" id="senha">
+    //     <div>
+    //         <button id="btn-entrar">Entrar</button>
+    //         <button id="btn-cadastrar">Cadastre-se</button>
+    //     </div>
+    //     <button class="btn-recupera-senha" href="#">Esqueci minha senha</button>
+    // </section>
+    // `
+    location.reload();
 };

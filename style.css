@@ -60,7 +60,8 @@ select {
 #btn-cadastrar,
 #btn-enviar,
 #btn-cad,
-#btn-recuperar {
+#btn-recuperar,
+.btn-confirma {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 8px;
@@ -74,7 +75,8 @@ select {
 #btn-cadastrar:hover,
 #btn-enviar:hover,
 #btn-cad:hover,
-#btn-recuperar:hover {
+#btn-recuperar:hover,
+.btn-confirma:hover {
     transform: scale(1.1);
     transition: 0.5s;
 }
@@ -129,4 +131,15 @@ footer>p {
     position: absolute;
     top: 25%;
     left: 30%;
+    border: 5px solid #556B2F;
+    box-shadow: inset 0px 0px 8px 5px #556B2F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-confirma {
+    display: block;
+    margin-top: 1rem;
+    width: 80%;
 }
