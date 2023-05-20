@@ -38,12 +38,6 @@ async function horariosDisponiveis() {
                 `
                 }
         } else {
-                // if (inputManha.checked) {
-                //         var horarioDisponivel = horarios.manha;
-                // } else if (inputTarde.checked) {
-                //         var horarioDisponivel = horarios.tarde;
-                // }
-
                 for (let i in horarioDisponivel) {
                         optionsHora.innerHTML +=
                                 `
@@ -54,11 +48,13 @@ async function horariosDisponiveis() {
 
 };
 
-function telaLogin() {
+function telaLogin(perfil) {
         const conteudo = document.querySelector('.conteudo');
         conteudo.innerHTML =
                 `
                 <section class="login">
+                        <h3>Olá, ${perfil[0] + " " + perfil[1]}! Preencha os campos abaixo para realizar o agendamento:<hr></h3>
+                        
                         <p>Escolha o Turno:</p>
                         <div class="check-turnos">
                                 <label for="input-manha"><input type="checkbox" id="input-manha">Manhã</label>
@@ -94,9 +90,9 @@ export function validaLogin() {
         var perfis = JSON.parse(localStorage.getItem('usuarios'));
 
         for (let i = 0; i < perfis.length; i++) {
-                if (login === perfis[i][0] && senha === perfis[i][1]) {
+                if (login === perfis[i][1] && senha === perfis[i][2]) {
                         alert("Login realizado com sucesso!");
-                        telaLogin();
+                        telaLogin(perfis[i]);
                 } else {
                         alert("Usuário e/ou senha informado(s) estão incorretos")
                 }
