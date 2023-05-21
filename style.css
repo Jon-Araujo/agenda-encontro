@@ -81,7 +81,8 @@ select {
 #btn-recuperar,
 .btn-confirma,
 #btn-proximo,
-.btn-tentar-novamente {
+.btn-tentar-novamente,
+.btn-prosseguir {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 8px;
@@ -98,7 +99,8 @@ select {
 #btn-recuperar:hover,
 .btn-confirma:hover,
 #btn-proximo:hover,
-.btn-tentar-novamente:hover {
+.btn-tentar-novamente:hover,
+.btn-prosseguir:hover {
     transform: scale(1.1);
     transition: 0.5s;
 }
@@ -150,7 +152,8 @@ footer>p {
 }
 
 .popUp-marcado,
-.popUp-email-erro {
+.popUp-email-erro,
+.popUp-senha-alterada {
     background-color: #FFFFFF;
     width: 35%;
     border-radius: 8px;
@@ -167,7 +170,8 @@ footer>p {
 }
 
 .btn-confirma,
-.btn-tentar-novamente {
+.btn-tentar-novamente,
+.btn-prosseguir {
     display: block;
     margin-top: 1rem;
     width: 80%;

@@ -38,10 +38,28 @@ export function popupEmailErrado(conteudo) {
         `
     <div class="popUp-email-erro">
         <h3 style="font-weight: bold; font-size: 1.5rem; margin-bottom: 1.5rem">Não foi possível prosseguir!</h3>
-        <p style="margin-bottom: 1rem">Algum dado fornecido está incorreto, tente novamente.</p>
+        <p style="margin-bottom: 1rem">Algum dado fornecido está incorreto, tente novamente. 
+        </br> Caso os dados inseridos estejam corretos, procure a seção de informática.</p>
         <img src="./img/Erro.png"style="max-width: 120px;">
-        <button class="btn-tentar-novamente">Tentar novamente</button>
+        <button class="btn-tentar-novamente" id="btn">Tentar novamente</button>
     </div>
     `
     document.querySelector('.btn-tentar-novamente').addEventListener("click", recuperaSenha)
-}
+};
+
+
+
+export function popSenhaAlterada(conteudo, senha) {
+    conteudo.innerHTML +=
+        `
+    <div class="popUp-senha-alterada">
+        <h3 style="font-weight: bold; font-size: 1.5rem; margin-bottom: 1.5rem">Senha recuperada com sucesso!</h3>
+        <p style="margin-bottom: 1rem">Sua senha é: <span style="background-color: green; color: white;">${senha}</span></p>
+        <img src="./img/verificar.png"style="max-width: 120px;">
+        <button class="btn-prosseguir">Prosseguir</button>
+    </div>
+    `
+    document.querySelector('.btn-prosseguir').addEventListener("click", () => {
+        location.reload()
+    });
+};
