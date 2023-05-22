@@ -48,35 +48,33 @@ function palavraChave() {
     const nome = document.getElementById('nome-recupera').value;
 
     var lista = JSON.parse(localStorage.getItem('usuarios'));
-    var testa = [];
+
     for (let i = 0; i < lista.length; i++) {
         if (lista[i][3] === email && lista[i][0] === pg && lista[i][1] === nome) {
-            testa.push(lista[i][1]);
-
             var pergunta = lista[i][4];
             conteudo.innerHTML =
                 `
-            <section class="recupera">
-                <label for="palavraChave">Informe sua resposta:</label>
-                <input type="text" id="palavraChave" placeholder="${pergunta}">
+                <section class="recupera">
+                    <label for="palavraChave">Informe sua resposta:</label>
+                    <input type="text" id="palavraChave" placeholder="${pergunta}">
 
-                <button id="btn-recuperar">Recuperar</button>
-            </section>
-            <button class="btn-voltar">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            `;
+                    <button id="btn-recuperar">Recuperar</button>
+                </section>
+                <button class="btn-voltar">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                `;
             document.getElementById('btn-recuperar').addEventListener("click", () => {
                 popSenhaAlterada(conteudo, lista[i][2])
             })
-        } 
+            break
+        } else if (lista[i][3] !== email || lista[i][0] !== pg || lista[i][1] !== nome) {
+            console.log('step two')
+            if (i === lista.length - 1) {
+                popupEmailErrado(conteudo)
+            }
+        }
     };
-    //Ao invés de popUp, deixar o campo errado vermelho?
-
-    // if (testa = []) {
-    //     popupEmailErrado(conteudo);
-    // }
-
 
     document.querySelector('.btn-voltar').addEventListener("click", () => {
         location.reload();
