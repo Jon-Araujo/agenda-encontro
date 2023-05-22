@@ -68,7 +68,7 @@ function cadastraUsuario() {
         var lista = [];
     }
 
-    lista.push([pg.value, usuario.value, senha.value, email.value, pergunta.value, resposta.value]);
+    lista.push([pg.value, usuario.value.toLowerCase(), senha.value, email.value.toLowerCase(), pergunta.value, resposta.value.toLowerCase()]);
 
     localStorage.usuarios = JSON.stringify(lista);
 

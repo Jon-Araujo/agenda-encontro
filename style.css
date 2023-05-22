@@ -153,7 +153,8 @@ footer>p {
 
 .popUp-marcado,
 .popUp-email-erro,
-.popUp-senha-alterada {
+.popUp-senha-alterada,
+.popUp-chave-errada {
     background-color: #FFFFFF;
     width: 35%;
     border-radius: 8px;

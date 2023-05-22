@@ -1,5 +1,6 @@
 import { popupEmailErrado } from "./popUp.js";
 import { popSenhaAlterada } from "./popUp.js";
+import { popupChaveErrada } from "./popUp.js";
 
 export function recuperaSenha() {
     const conteudo = document.querySelector('.conteudo');
@@ -43,9 +44,9 @@ export function recuperaSenha() {
 
 function palavraChave() {
     const conteudo = document.querySelector('.conteudo');
-    const email = document.querySelector('#email-recupera').value;
+    const email = document.querySelector('#email-recupera').value.toLowerCase();
     const pg = document.getElementById('select-pg').value;
-    const nome = document.getElementById('nome-recupera').value;
+    const nome = document.getElementById('nome-recupera').value.toLowerCase();
 
     var lista = JSON.parse(localStorage.getItem('usuarios'));
 
@@ -65,11 +66,15 @@ function palavraChave() {
                 </button>
                 `;
             document.getElementById('btn-recuperar').addEventListener("click", () => {
-                popSenhaAlterada(conteudo, lista[i][2])
+                const resposta = document.getElementById('palavraChave').value.toLowerCase();
+                if (resposta === lista[i][5]) {
+                    popSenhaAlterada(conteudo, lista[i][2])
+                } else {
+                    popupChaveErrada(conteudo, resposta)
+                }
             })
             break
-        } else if (lista[i][3] !== email || lista[i][0] !== pg || lista[i][1] !== nome) {
-            console.log('step two')
+        } else {
             if (i === lista.length - 1) {
                 popupEmailErrado(conteudo)
             }

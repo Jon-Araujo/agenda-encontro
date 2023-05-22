@@ -53,7 +53,7 @@ function telaLogin(perfil) {
         conteudo.innerHTML =
                 `
                 <section class="login">
-                        <h3>Olá, ${perfil[0] + " " + perfil[1]}! Preencha os campos abaixo para realizar o agendamento:<hr></h3>
+                        <h3>Olá, ${perfil[0] + " " + perfil[1][0].toUpperCase()+perfil[1].slice(1)}! Preencha os campos abaixo para realizar o agendamento:<hr></h3>
                         
                         <p>Escolha o Turno:</p>
                         <div class="check-turnos">
@@ -84,7 +84,7 @@ function telaLogin(perfil) {
 };
 
 export function validaLogin() {
-        const login = document.getElementById('login').value;
+        const login = document.getElementById('login').value.toLowerCase();
         const senha = document.getElementById('senha').value;
 
         var perfis = JSON.parse(localStorage.getItem('usuarios'));
@@ -93,8 +93,11 @@ export function validaLogin() {
                 if (login === perfis[i][1] && senha === perfis[i][2]) {
                         alert("Login realizado com sucesso!");
                         telaLogin(perfis[i]);
+                        break
                 } else {
-                        alert("Usuário e/ou senha informado(s) estão incorretos")
+                        if (i === perfis.length - 1){
+                                alert("Usuário e/ou senha informado(s) estão incorretos");
+                        }
                 }
         }
 };
