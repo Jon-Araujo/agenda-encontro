@@ -76,6 +76,11 @@ function telaLogin(perfil) {
                 `
         document.getElementById('input-data').addEventListener("input", horariosDisponiveis);
         document.getElementById('btn-enviar').addEventListener("click", agendar);
+        document.getElementById('select-hora').addEventListener('keydown', (evento) => {
+                if (evento.key === "Enter") {
+                    agendar();
+                };
+            });
 
         document.querySelector('.btn-logout').addEventListener("click", () => {
                 location.reload();

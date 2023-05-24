@@ -48,10 +48,15 @@ export function telaCadastro() {
             </button>
             `
     document.getElementById('btn-cad').addEventListener("click", cadastraUsuario);
+    document.getElementById('input-chave').addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            cadastraUsuario();
+        };
+    });
 
     document.querySelector('.btn-voltar').addEventListener("click", () => {
-        location.reload()
-    })
+        location.reload();
+    });
 };
 
 function cadastraUsuario() {

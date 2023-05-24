@@ -31,7 +31,7 @@ export function popUpMarcado(dia, hora) {
         `
     }
     document.querySelector('.btn-confirma').addEventListener("click", btnConfirma);
-}
+};
 
 export function popUpCadastrado() {
     const body = document.querySelector('.conteudo');
@@ -74,9 +74,7 @@ export function popSenhaAlterada(conteudo, senha) {
         <button class="btn-prosseguir">Prosseguir</button>
     </div>
     `
-    document.querySelector('.btn-prosseguir').addEventListener("click", () => {
-        location.reload()
-    });
+    document.querySelector('.btn-prosseguir').addEventListener("click", btnConfirma);
 };
 
 export function popupChaveErrada(conteudo, resposta) {

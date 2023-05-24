@@ -30,7 +30,3 @@ export function agendar() {
 
     localStorage.agenda = JSON.stringify(lista);
 };
-
-function msgConfirmacao() {
-    window.alert("marcado!");
-}

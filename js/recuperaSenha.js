@@ -40,6 +40,12 @@ export function recuperaSenha() {
     document.querySelector('.btn-voltar').addEventListener("click", () => {
         location.reload();
     });
+
+    document.getElementById('nome-recupera').addEventListener('keydown', (evento) => {
+        if (evento.key === "Enter") {
+            palavraChave();
+        };
+    });
 }
 
 function palavraChave() {
@@ -65,14 +71,15 @@ function palavraChave() {
                     <span class="material-symbols-outlined">arrow_back</span>
                 </button>
                 `;
-            document.getElementById('btn-recuperar').addEventListener("click", () => {
-                const resposta = document.getElementById('palavraChave').value.toLowerCase();
-                if (resposta === lista[i][5]) {
-                    popSenhaAlterada(conteudo, lista[i][2])
-                } else {
-                    popupChaveErrada(conteudo, resposta)
+
+            document.getElementById('palavraChave').addEventListener('keydown', (evento) => {
+                if (evento.key === "Enter") {
+                    recupera(i, conteudo, lista);
                 }
-            })
+            });
+            document.getElementById('btn-recuperar').addEventListener("click", () => {
+                recupera(i, conteudo, lista);
+            });
             break
         } else {
             if (i === lista.length - 1) {
@@ -85,3 +92,12 @@ function palavraChave() {
         location.reload();
     });
 };
+
+function recupera(i, conteudo, lista) {
+    const resposta = document.getElementById('palavraChave').value.toLowerCase();
+        if (resposta === lista[i][5]) {
+            popSenhaAlterada(conteudo, lista[i][2])
+        } else {
+            popupChaveErrada(conteudo, resposta)
+        }
+}
