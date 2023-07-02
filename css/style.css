@@ -1,7 +1,7 @@
 body {
-    /* background-image: url('../img/operações.jpg'); */
+    background-image: url('../img/operações.jpg');
     /* background-image: url('../img/blindados.jpg'); */
-    background-image: url('../img/25blog.png');
+    /* background-image: url('../img/25blog.png'); */
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
@@ -42,10 +42,10 @@ header {
     background-color: #FFFFFF;
     padding: 1rem;
     position: absolute;
-    left: 8%;
+    /* left: 8%;
+    top: 15%; */
     top: 15%;
-    /* top: 25%;
-    right: 8%; */
+    right: 5%;
 }
 
 .cadastro {
